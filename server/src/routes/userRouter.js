@@ -12,6 +12,7 @@ router.post('/api/users', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({user, token})
     } catch (e) {
+        console.log("ERROR ERROR, ", e)
         res.status(400).send(e)
     }
 })
@@ -78,6 +79,10 @@ router.delete('/api/users/me', auth, async (req, res) => {
     } catch (e) {
         res.status(500).send()
     }
+})
+
+router.get('/api/test', (req, res) => {
+    res.send({value: "hello world"})
 })
 
 module.exports = router

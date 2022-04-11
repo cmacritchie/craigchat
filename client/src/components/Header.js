@@ -25,7 +25,7 @@ const Header = ({ user, logout }) => {
         }
 
     return(
-        <Navbar className="teal darken-1" brand={<NavLink to="/">Circle CVI Test<i className="material-icons right">home</i></NavLink>}  alignLinks="right">
+        <Navbar className="teal darken-1" brand={<NavLink to="/">Craig - Chat<i className="material-icons right">home</i></NavLink>}  alignLinks="right">
             {user.isAuthenticated && <NavItem>{user.user.name} <i className="material-icons right">person</i></NavItem>}
             { renderContent() }
         </Navbar>

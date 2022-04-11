@@ -1,0 +1,44 @@
+version: '3'
+services:
+    nginx: 
+        restart: always
+        depends_on:
+            - client
+            - api
+            - mongo
+        build:
+            dockerfile: Dockerfile.dev
+            context: ./nginx
+        ports:
+            - '3050:80'
+    client:
+        stdin_open: true
+        build:
+            context: ./client/
+            dockerfile: Dockerfile.dev
+        ports:
+            - "3000:3000"
+        volumes:
+            - /app/node_modules
+            - ./client/.:/app
+    api:
+        build:
+            context: ./server 
+            dockerfile: Dockerfile.dev
+        ports:
+            - "5001:5001"
+        volumes:
+            - /server/node_modules
+            - ./server/.:/server
+        links:
+          - mongo
+        environment:
+          - JWT_SECRET=testsampletestsample
+          - MONGODB=mongodb://mongo:27017/chat_app
+    mongo:
+      container_name: mongo
+      image: 'mongo'
+      ports:
+        - '27017:27017'
+      volumes:
+        - './data:/data/db'

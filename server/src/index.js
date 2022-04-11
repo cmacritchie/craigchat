@@ -23,7 +23,7 @@ app.use(emailRouter)
 
 
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5001
 
 const server = app.listen(port, () => {
     console.log('Server with websocket is up on port ' + port) 

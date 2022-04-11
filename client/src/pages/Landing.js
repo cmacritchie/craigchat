@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { actionCreators } from '../store/roomReducer'
+import { useEffect } from 'react';
+import axios from 'axios'
 
 const Landing = ({ room, user, deleteRoom}) => {
 

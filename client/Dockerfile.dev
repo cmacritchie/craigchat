@@ -1,0 +1,15 @@
+#Base Image
+FROM node:latest
+
+#Set working directory, recommended as to not overwrite image folders
+WORKDIR '/app'
+
+#Copy package for dependencies and install
+COPY package.json .
+COPY package-lock.json .
+RUN npm install
+
+#Copy the rest of the files over
+COPY . .
+
+CMD ["npm", "run", "linux-start"]

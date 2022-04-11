@@ -33,6 +33,7 @@ export const actionCreators = {
                 payload: res.data
             })
         } catch (err) {
+            console.log(err)
             toastError('Error adding user')
         }
     },
